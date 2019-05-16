@@ -1,6 +1,6 @@
 package daily.coding.problem.kotlin.day1
 
-object FindTwoNumbersAddUpToK {
+object FindTwoNumbersAddUpToKUsingPipeLine {
     operator fun invoke(numbers: List<Int>, k: Int): Boolean {
         val passedNumber = mutableListOf<Int>()
 
@@ -11,6 +11,15 @@ object FindTwoNumbersAddUpToK {
             } else {
                 true
             }
-        }?.let { true }?:false
+        }?.let { true } ?: false
+    }
+}
+
+object FindTwoNumbersAddUpToKUsingForLoop {
+    operator fun invoke(numbers: List<Int>, k: Int): Boolean {
+        for ((index, i) in numbers.withIndex()) {
+            if (numbers.subList(index + 1, numbers.size).any{it + i == k}) return true
+        }
+        return false
     }
 }
