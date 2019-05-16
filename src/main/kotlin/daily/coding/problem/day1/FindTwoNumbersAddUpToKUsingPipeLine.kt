@@ -1,4 +1,4 @@
-package daily.coding.problem.kotlin.day1
+package daily.coding.problem.day1
 
 object FindTwoNumbersAddUpToKUsingPipeLine {
     operator fun invoke(numbers: List<Int>, k: Int): Boolean {

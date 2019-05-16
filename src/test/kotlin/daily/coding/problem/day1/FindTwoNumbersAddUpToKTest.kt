@@ -1,4 +1,4 @@
-package daily.coding.problem.kotlin.day1
+package daily.coding.problem.day1
 
 import kotlin.random.Random
 import kotlin.test.Test
