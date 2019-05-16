@@ -9,4 +9,10 @@ class FindTwoNumbersAddUpToKTest {
         val k = Random(System.currentTimeMillis()).nextInt()
         assertFalse(FindTwoNumbersAddUpToK(emptyList(), k))
     }
+
+    @Test fun `should always be false, ie can never find two numbers adding up to k,  when the list only has one number`() {
+        val i = Random(System.currentTimeMillis()).nextInt()
+        val k = Random(System.currentTimeMillis()).nextInt()
+        assertFalse(FindTwoNumbersAddUpToK(listOf(i), k))
+    }
 }
