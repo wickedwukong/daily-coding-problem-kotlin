@@ -1,7 +1,6 @@
 package daily.coding.problem.kotlin.day1
 
 import kotlin.random.Random
-import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -24,6 +23,14 @@ class FindTwoNumbersAddUpToKTest {
 
     @Test fun `should be true, when there are two number adding up to k`() {
         assertTrue(FindTwoNumbersAddUpToK(listOf(1,2), 3))
+    }
+
+    @Test fun `should be true, when there are two number adding up to k - another list`() {
+        assertTrue(FindTwoNumbersAddUpToK(listOf(3, 1,2, 5, 100 ,2, 100 -2, 34, 99), 100))
+    }
+
+    @Test fun `should be false, when there are NOT two number adding up to k - another list`() {
+        assertFalse(FindTwoNumbersAddUpToK(listOf(3, 1,2, 5, 100 ,2, 100 -2, 34, 99), 1000))
     }
 
     @Test fun `should be true for the sample list in the problem statement`() {
