@@ -18,7 +18,15 @@ class FindTwoNumbersAddUpToKTest {
         assertFalse(FindTwoNumbersAddUpToK(listOf(i), k))
     }
 
-    @Ignore fun `should be true for the sample list in the problem statement`() {
+    @Test fun `should be false, when there are no two number found to add up to k`() {
+        assertFalse(FindTwoNumbersAddUpToK(listOf(1,2), 4))
+    }
+
+    @Test fun `should be true, when there are two number adding up to k`() {
+        assertTrue(FindTwoNumbersAddUpToK(listOf(1,2), 3))
+    }
+
+    @Test fun `should be true for the sample list in the problem statement`() {
         assertTrue(FindTwoNumbersAddUpToK(listOf(10, 15, 3, 7), 17))
     }
 }
