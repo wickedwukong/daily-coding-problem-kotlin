@@ -49,14 +49,16 @@ class FindTwoNumbersAddUpToKTest {
 
     @Test
     fun `should be true, when there are two number adding up to k - another list`() {
-        assertTrue(FindTwoNumbersAddUpToKUsingPipeLine(listOf(3, 1, 2, 5, 100, 2, 100 - 2, 34, 99), 100))
-        assertTrue(FindTwoNumbersAddUpToKUsingForLoop(listOf(3, 1, 2, 5, 100, 2, 100 - 2, 34, 99), 100))
+        assertTrue(FindTwoNumbersAddUpToKUsingPipeLine(listOf(3, 1, 2, 5, 100, 2, 100, 34, 99), 100))
+        assertTrue(FindTwoNumbersAddUpToKUsingPipeLine(listOf(3, 1, 2, 5, 100, 2, 100, 34, 99, 1), 100))
+        assertTrue(FindTwoNumbersAddUpToKUsingForLoop(listOf(3, 1, 2, 5, 100, 2, 100, 34, 99), 100))
+        assertTrue(FindTwoNumbersAddUpToKUsingForLoop(listOf(3, 1, 2, 5, 100, 2, 100, 34, 99, 1), 100))
     }
 
     @Test
     fun `should be false, when there are NOT two number adding up to k - another list`() {
-        assertFalse(FindTwoNumbersAddUpToKUsingPipeLine(listOf(3, 1, 2, 5, 100, 2, 100 - 2, 34, 99), 1000))
-        assertFalse(FindTwoNumbersAddUpToKUsingForLoop(listOf(3, 1, 2, 5, 100, 2, 100 - 2, 34, 99), 1000))
+        assertFalse(FindTwoNumbersAddUpToKUsingPipeLine(listOf(3, 1, 2, 5, 100, 2, 100, 34, 99), 1000))
+        assertFalse(FindTwoNumbersAddUpToKUsingForLoop(listOf(3, 1, 2, 5, 100, 2, 100, 34, 99), 1000))
     }
 
     @Test
