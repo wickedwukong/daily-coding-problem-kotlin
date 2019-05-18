@@ -2,7 +2,6 @@ package daily.coding.problem.day2
 
 import kotlin.random.Random
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import org.assertj.core.api.Assertions.assertThat
 
 class NewArrayOfProductsOfAllElementsExceptTheOneAtIndexITest {
