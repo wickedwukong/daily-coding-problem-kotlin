@@ -12,11 +12,23 @@ Follow-up: what if you can't use division?
 
 object NewArrayOfProductsOfAllElementsExceptTheOneAtIndexIUsingDivision {
     operator fun invoke(values: List<Int>): List<Int> {
-        if(values.isEmpty()) return emptyList()
-        if(values.size == 1) return emptyList()
+        if (values.size <= 2) return emptyList()
 
         return values.map { totalProduct(values) / it }
     }
 
     private fun totalProduct(values: List<Int>) = values.reduce { acc, i -> acc * i }
+}
+
+object NewArrayOfProductsOfAllElementsExceptTheOneAtIndexIWithoutDivision {
+    operator fun invoke(values: List<Int>): List<Int> {
+        if (values.size <= 2) return emptyList()
+
+        return values.withIndex().map { (index, _) ->
+                val productOfElementsBeforeIndex = values.subList(0, index).fold(1, {acc, i -> acc * i })
+                val productOfElementsAfterIndex = values.subList(index + 1, values.size).fold(1, {acc, i -> acc * i })
+
+            productOfElementsBeforeIndex * productOfElementsAfterIndex
+        }
+    }
 }
