@@ -6,7 +6,16 @@ import org.assertj.core.api.Assertions.assertThat
 class SerializeAndDeserializeBinaryTreeTest {
     @Test
     fun `should serialize a single node binary tree`() {
-        assertThat(Node("root", null, null).serialize()).isEqualTo("root,null,null")
+        val singleNodeBinaryTree = Node("root", null, null)
+
+        assertThat(singleNodeBinaryTree.serialize()).isEqualTo("root,null,null")
+    }
+
+    @Test
+    fun `should serialize a binary tree with a root and one single left child`() {
+        val rootWithOneSingleLeftChildBinaryTree = Node("root", Node("left", null, null), null)
+
+        assertThat(rootWithOneSingleLeftChildBinaryTree.serialize()).isEqualTo("root,left,null,null,null")
     }
 }
 
