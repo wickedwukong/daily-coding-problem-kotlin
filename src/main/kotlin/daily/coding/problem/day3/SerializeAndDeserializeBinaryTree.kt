@@ -17,26 +17,25 @@ data class Node(val value: String, val left: Node?, val right: Node?) {
         fun deserialize(serialized: String): Node {
             val nodeValues = serialized.split(",")
 
+            val leftChildNode = deserializeChildrenNodes(nodeValues.subList(1, nodeValues.size))
+            val rightChildNode = deserializeChildrenNodes(leftChildNode.second)
+
             val rootNodeValue = nodeValues.first()
-
-            val leftChildNode = doIt(nodeValues.subList(1, nodeValues.size))
-            val rightChildNode = doIt(leftChildNode.second)
-
             return Node(rootNodeValue, leftChildNode.first, rightChildNode.first)
         }
 
-        private fun doIt(nodeValues: List<String>): Pair<Node?, List<String>> {
-            val parentNodeValue = nodeValues.first()
+        private fun deserializeChildrenNodes(nodeValues: List<String>): Pair<Node?, List<String>> {
+            fun parentNodeValue() = nodeValues.first()
 
-            if (parentNodeValue == "null") {
+            if (parentNodeValue() == "null") {
                 return Pair(null, nodeValues.subList(1, nodeValues.size))
             }
 
-            val leftChildValue = doIt(nodeValues.subList(1, nodeValues.size))
+            val leftChild = deserializeChildrenNodes(nodeValues.subList(1, nodeValues.size))
 
-            val rightChildValue = doIt(leftChildValue.second)
+            val rightChild = deserializeChildrenNodes(leftChild.second)
 
-            return Pair(Node(parentNodeValue, leftChildValue.first, rightChildValue.first), rightChildValue.second)
+            return Pair(Node(parentNodeValue(), leftChild.first, rightChild.first), rightChild.second)
         }
     }
 }
