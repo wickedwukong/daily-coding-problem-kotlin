@@ -17,5 +17,12 @@ class SerializeAndDeserializeBinaryTreeTest {
 
         assertThat(rootWithOneSingleLeftChildBinaryTree.serialize()).isEqualTo("root,left,null,null,null")
     }
+
+    @Test
+    fun `should serialize a binary tree with a root and one single right child`() {
+        val rootWithOneSingleRightChildBinaryTree = Node("root", null, Node("right", null, null))
+
+        assertThat(rootWithOneSingleRightChildBinaryTree.serialize()).isEqualTo("root,null,right,null,null")
+    }
 }
 
