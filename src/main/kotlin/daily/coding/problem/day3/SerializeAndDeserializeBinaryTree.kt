@@ -40,17 +40,14 @@ data class Node(val value: String, val left: Node?, val right: Node?) {
 }
 
 fun Node.serialize(): String {
-    return serialize(this, listOf(this.value)).joinToString(",")
+    return doSerialize(this)
 }
 
-private fun serialize(node: Node, nodesRenderSoFar: List<String?>): List<String?> {
-    val nullString: String? = null
-    val nodesSoFarIncludingLeftNodes = node.left?.let {
-        serialize(it, nodesRenderSoFar.plus(it.value))
-    } ?: nodesRenderSoFar.plus(nullString)
+private fun doSerialize(node: Node?): String {
+    if (node == null) {
+        return "null"
+    }
 
-    return node.right?.let {
-        serialize(it, nodesSoFarIncludingLeftNodes.plus(it.value))
-    } ?: nodesSoFarIncludingLeftNodes.plus(nullString)
+    return "${node.value},${doSerialize(node.left)},${doSerialize(node.right)}"
 }
 
