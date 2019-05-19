@@ -25,6 +25,7 @@ class SerializeAndDeserializeBinaryTreeTest {
         val rootWithOneSingleRightChildBinaryTree = Node("root", null, Node("right", null, null))
 
         assertThat(rootWithOneSingleRightChildBinaryTree.serialize()).isEqualTo("root,null,right,null,null")
+        assertThat(Node.deserialize("root,null,right,null,null")).isEqualTo(rootWithOneSingleRightChildBinaryTree)
     }
 
     @Test
@@ -32,6 +33,7 @@ class SerializeAndDeserializeBinaryTreeTest {
         val rootWithOneSingleRightChildBinaryTree = Node("root", Node("left", null, null), Node("right", null, null))
 
         assertThat(rootWithOneSingleRightChildBinaryTree.serialize()).isEqualTo("root,left,null,null,right,null,null")
+        assertThat(Node.deserialize("root,left,null,null,right,null,null")).isEqualTo(rootWithOneSingleRightChildBinaryTree)
     }
 
     @Test
@@ -40,6 +42,7 @@ class SerializeAndDeserializeBinaryTreeTest {
                 Node("left", Node("left.left", null, null), null), null)
 
         assertThat(rootWithOneLeftChildAndOneLeftGrandChild.serialize()).isEqualTo("root,left,left.left,null,null,null,null")
+        assertThat(Node.deserialize("root,left,left.left,null,null,null,null")).isEqualTo(rootWithOneLeftChildAndOneLeftGrandChild)
     }
 
     @Test
@@ -48,6 +51,7 @@ class SerializeAndDeserializeBinaryTreeTest {
                 Node("left", Node("left.left", null, null), Node("left.right", null, null)), null)
 
         assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("root,left,left.left,null,null,left.right,null,null,null")
+        assertThat(Node.deserialize("root,left,left.left,null,null,left.right,null,null,null")).isEqualTo(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild)
     }
 
     /*
