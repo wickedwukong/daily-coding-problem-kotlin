@@ -82,14 +82,48 @@ class SerializeAndDeserializeBinaryTreeTest {
 
     @Test
     fun `should serialize a binary tree - a more complicated example`() {
-        val rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild = Node("5",
+        val aComplicatedBinaryTree = Node("5",
                 Node("4", Node("3",
                         Node("-1", null, null), null), null),
                 Node("7",
                         Node("2", Node("9", null, null), null), null))
 
-        assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")
-        assertThat(Node.deserialize("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")).isEqualTo(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild)
+        assertThat(aComplicatedBinaryTree.serialize()).isEqualTo("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")
+        assertThat(Node.deserialize("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")).isEqualTo(aComplicatedBinaryTree)
+    }
+
+    /*
+    *                      5
+    *                    /   \
+    *                   4     7
+    *                  / \    /
+    *                 3  10  2
+    *                /      / \
+    *              -1      9  13
+    *                \    /
+    *                11  12
+    * */
+
+    @Test
+    fun `should serialize a binary tree - a more complicated example 2`() {
+        val aComplicatedBinaryTree = Node("5",
+                Node("4",
+                        Node("3",
+                                Node("-1",
+                                        null,
+                                        Node("11", null, null)),
+                                null),
+                        Node("10", null, null)),
+                Node("7",
+                        Node("2",
+                                Node("9",
+                                        Node("12", null, null),
+                                        null),
+                                Node("13", null, null)),
+                        null))
+
+        assertThat(aComplicatedBinaryTree.serialize()).isEqualTo("5,4,3,-1,null,11,null,null,null,10,null,null,7,2,9,12,null,null,null,13,null,null,null")
+        assertThat(Node.deserialize("5,4,3,-1,null,11,null,null,null,10,null,null,7,2,9,12,null,null,null,13,null,null,null")).isEqualTo(aComplicatedBinaryTree)
     }
 
     @Test

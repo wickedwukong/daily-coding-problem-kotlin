@@ -25,7 +25,6 @@ data class Node(val value: String, val left: Node?, val right: Node?) {
                 }
 
                 val leftChild = deserializeChildrenNodes(index + 1)
-
                 val rightChild = deserializeChildrenNodes(leftChild.second)
 
                 return Pair(Node(parentNodeValue(), leftChild.first, rightChild.first), rightChild.second)
@@ -37,7 +36,6 @@ data class Node(val value: String, val left: Node?, val right: Node?) {
             val rootNodeValue = nodeValues.first()
             return Node(rootNodeValue, leftChildNode.first, rightChildNode.first)
         }
-
     }
 }
 
