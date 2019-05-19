@@ -67,6 +67,7 @@ class SerializeAndDeserializeBinaryTreeTest {
                 Node("2", Node("3", null, null), null))
 
         assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("1,null,2,3,null,null,null")
+        assertThat(Node.deserialize("1,null,2,3,null,null,null")).isEqualTo(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild)
     }
 
     /*
@@ -88,6 +89,7 @@ class SerializeAndDeserializeBinaryTreeTest {
                         Node("2", Node("9", null, null), null), null))
 
         assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")
+        assertThat(Node.deserialize("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")).isEqualTo(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild)
     }
 
     @Test
@@ -96,5 +98,6 @@ class SerializeAndDeserializeBinaryTreeTest {
                 Node("1", Node("2", null, null), Node("3", Node("4", null, null), Node("5", null, null)))
 
         assertThat(rootWithOneSingleRightChildBinaryTree.serialize()).isEqualTo("1,2,null,null,3,4,null,null,5,null,null")
+        assertThat(Node.deserialize("1,2,null,null,3,4,null,null,5,null,null")).isEqualTo(rootWithOneSingleRightChildBinaryTree)
     }
 }
