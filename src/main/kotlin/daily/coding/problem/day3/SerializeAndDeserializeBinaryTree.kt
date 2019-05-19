@@ -6,8 +6,8 @@ The form of the serialization chosen for the algorithm
 1
 / \
 2   3
-/ \
-4   5
+    / \
+   4   5
 
 as "[1,2,3,null,null,4,5]"
 
