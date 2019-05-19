@@ -43,9 +43,45 @@ class SerializeAndDeserializeBinaryTreeTest {
     @Test
     fun `should serialize a binary tree - a root with left child and one left grand child, one right grand child`() {
         val rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild = Node("root",
-                Node("left", Node("left.left", null, null), Node("left.right", null,null)), null)
+                Node("left", Node("left.left", null, null), Node("left.right", null, null)), null)
 
         assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("root,left,left.left,null,null,left.right,null,null,null")
+    }
+
+    /*
+    1
+      \
+       2
+      /
+     3
+   */
+    @Test
+    fun `should serialize a binary tree - a root with a right child and one right left grand child`() {
+        val rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild = Node("1", null,
+                Node("2", Node("3", null, null), null))
+
+        assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("1,null,2,3,null,null,null")
+    }
+
+    /*
+    *                     5
+    *                    / \
+    *                   4   7
+    *                  /    /
+    *                 3    2
+    *                /    /
+    *              -1    9
+    * */
+
+    @Test
+    fun `should serialize a binary tree - a more complicated example`() {
+        val rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild = Node("5",
+                Node("4", Node("3",
+                        Node("-1", null, null), null), null),
+                Node("7",
+                        Node("2", Node("9", null, null), null), null))
+
+        assertThat(rootWithOneLeftChildAndOneLeftGrandChildOneRightGrandChild.serialize()).isEqualTo("5,4,3,-1,null,null,null,null,7,2,9,null,null,null,null")
     }
 
     @Test
