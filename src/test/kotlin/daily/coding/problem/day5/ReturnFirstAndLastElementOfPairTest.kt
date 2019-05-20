@@ -1,8 +1,8 @@
 package daily.coding.problem.day5
 
-import daily.coding.problem.day5.ReturnFirstAndLastElementofPair.cons
-import daily.coding.problem.day5.ReturnFirstAndLastElementofPair.car
-import daily.coding.problem.day5.ReturnFirstAndLastElementofPair.cdr
+import daily.coding.problem.day5.ReturnFirstAndLastElementOfPair.cons
+import daily.coding.problem.day5.ReturnFirstAndLastElementOfPair.car
+import daily.coding.problem.day5.ReturnFirstAndLastElementOfPair.cdr
 import kotlin.test.Test
 import org.assertj.core.api.Assertions.assertThat
 
