@@ -10,7 +10,7 @@ class FindTheLowestPositiveIntegerThatDoesNotExistInTheArrayTest {
     }
 
     @Test
-    fun `should return 1 for list has no postive values`() {
+    fun `should return 1 for list has no positive values`() {
         assertThat(FindTheLowestPositiveIntegerThatDoesNotExistInTheArray(listOf(-1))).isEqualTo(1)
         assertThat(FindTheLowestPositiveIntegerThatDoesNotExistInTheArray(listOf(0))).isEqualTo(1)
         assertThat(FindTheLowestPositiveIntegerThatDoesNotExistInTheArray(listOf(0, 0, -10, 0, -99))).isEqualTo(1)
@@ -37,7 +37,7 @@ class FindTheLowestPositiveIntegerThatDoesNotExistInTheArrayTest {
     }
 
     @Test
-    fun `should `() {
+    fun `should work for more complex cases`() {
         assertThat(FindTheLowestPositiveIntegerThatDoesNotExistInTheArray(listOf(1, 2, 6, 7))).isEqualTo(3)
         assertThat(FindTheLowestPositiveIntegerThatDoesNotExistInTheArray(listOf(1, 2, 3, 7))).isEqualTo(4)
         assertThat(FindTheLowestPositiveIntegerThatDoesNotExistInTheArray(listOf(1, 2, 3, 4, 5, 6, 7))).isEqualTo(8)
