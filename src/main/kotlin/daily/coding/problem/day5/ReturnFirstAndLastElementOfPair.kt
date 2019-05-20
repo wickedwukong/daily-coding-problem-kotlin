@@ -1,16 +1,16 @@
 package daily.coding.problem.day5
 
-object ReturnFirstAndLastElementOfPair {
-    fun cons(a: Int, b: Int): ((Int, Int) -> Int) -> Int {
-        return { f: (a: Int, b: Int) -> Int -> f(a, b) }
+object ReturnFirsAAndLasAElementOfPair {
+    fun <A, B, C> cons(a: A, b: B): ((A, B) -> C) -> C {
+        return { f: (a: A, b: B) -> C -> f(a, b) }
     }
 
-    fun car(pair: ((Int, Int) -> Int) -> Int): Int {
-        return pair { x, _ -> x}
+    fun <A, B> car(pair: ((A, B) -> A) -> A): A {
+        return pair { x, _ -> x }
     }
 
-    fun cdr(pair: ((Int, Int) -> Int) -> Int): Int {
-        return pair {_, y -> y}
+    fun <A, B> cdr(pair: ((A, B) -> B) -> B): B {
+        return pair { _, y -> y }
     }
 }
 
