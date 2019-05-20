@@ -1,8 +1,5 @@
 package daily.coding.problem.day5
 
-import daily.coding.problem.day5.ReturnFirsAAndLasAElementOfPair.car
-import daily.coding.problem.day5.ReturnFirsAAndLasAElementOfPair.cdr
-import daily.coding.problem.day5.ReturnFirsAAndLasAElementOfPair.cons
 import kotlin.test.Test
 import org.assertj.core.api.Assertions.assertThat
 
