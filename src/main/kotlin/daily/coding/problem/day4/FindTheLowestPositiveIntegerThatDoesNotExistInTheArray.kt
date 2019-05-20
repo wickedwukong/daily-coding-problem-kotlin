@@ -12,6 +12,12 @@ package daily.coding.problem.day4
 
 object FindTheLowestPositiveIntegerThatDoesNotExistInTheArray {
     operator fun invoke(valueList: List<Int>): Int {
-        return 1
+        if (valueList.none { it > 0 }) return 1
+
+        fun lowestPositive() = valueList.filter { it > 0 }.sorted().first()
+        fun highestPositive() = valueList.filter { it > 0 }.sorted().last()
+
+
+        return ((lowestPositive() - 1)..(highestPositive() + 1)).filter { !valueList.contains(it) }.first { it > 0 }
     }
 }
