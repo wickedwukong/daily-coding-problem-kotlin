@@ -40,5 +40,8 @@ class DecodeMessageTest {
         assertThat(decodeMessage("27")).isEqualTo(1)
         assertThat(decodeMessage("127")).isEqualTo(2)
         assertThat(decodeMessage("1271")).isEqualTo(2)
+        assertThat(decodeMessage("127127")).isEqualTo(4)
+        assertThat(decodeMessage("1271271")).isEqualTo(4)
+        assertThat(decodeMessage("12712711")).isEqualTo(8)
     }
 }

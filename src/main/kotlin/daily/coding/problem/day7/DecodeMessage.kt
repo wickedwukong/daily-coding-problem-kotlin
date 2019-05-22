@@ -13,14 +13,15 @@ package daily.coding.problem.day7
 fun decodeMessage(message: String): Int {
     if (message.isEmpty()) return 0
     if (message.length == 1) return 1
+    if (message.length == 2 && messageDecodable(message)) return 2
 
-    return when {
-        messageIsDecodableDoubleDigits(message) -> decodeMessage(message.substring(1)) + 1
-        firstTwoDigitsAreDecodable(message) -> decodeMessage(message.substring(1)) + decodeMessage(message.substring(2))
-        else -> decodeMessage(message.substring(1))
+    return if (firstTwoDigitsAreDecodable(message)) {
+        decodeMessage(message.substring(1)) + decodeMessage(message.substring(2))
+    } else {
+        decodeMessage(message.substring(1))
     }
 }
 
-private fun firstTwoDigitsAreDecodable(message: String) = message.substring(0, 2).toInt() < 27
+private fun firstTwoDigitsAreDecodable(message: String) = messageDecodable(message.substring(0, 2))
 
-private fun messageIsDecodableDoubleDigits(message: String) = message.length == 2 && message.toInt() < 27
+private fun messageDecodable(message: String) = message.toInt() < 27
