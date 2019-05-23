@@ -11,8 +11,9 @@ You can assume that the messages are decodable. For example, '001' is not allowe
 package daily.coding.problem.day7
 
 fun decodeMessage(message: String): Int {
-    if (message.isEmpty()) return 0
+    if (message.isEmpty() || message.startsWith("0")) return 0
     if (message.length == 1) return 1
+    if (message.length == 2 && messageDecodable(message) && messageIsTens(message)) return 1
     if (message.length == 2 && messageDecodable(message)) return 2
 
     return if (firstTwoDigitsAreDecodable(message)) {
@@ -21,6 +22,8 @@ fun decodeMessage(message: String): Int {
         decodeMessage(message.substring(1))
     }
 }
+
+private fun messageIsTens(message: String) = message.endsWith("0")
 
 private fun firstTwoDigitsAreDecodable(message: String) = messageDecodable(message.substring(0, 2))
 

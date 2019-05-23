@@ -11,6 +11,17 @@ class DecodeMessageTest {
     }
 
     @Test
+    fun `zeros`() {
+        assertThat(decodeMessage("10")).isEqualTo(1)
+        assertThat(decodeMessage("30")).isEqualTo(0)
+        assertThat(decodeMessage("110")).isEqualTo(1)
+        assertThat(decodeMessage("1010")).isEqualTo(1)
+        assertThat(decodeMessage("10101")).isEqualTo(1)
+        assertThat(decodeMessage("101011")).isEqualTo(2)
+        assertThat(decodeMessage("130")).isEqualTo(0)
+    }
+
+    @Test
     fun `should have 1 way of decoding for 1 digit`() {
         assertThat(decodeMessage("1")).isEqualTo(1)
     }
