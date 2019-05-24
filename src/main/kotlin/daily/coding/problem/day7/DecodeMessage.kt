@@ -10,16 +10,16 @@ You can assume that the messages are decodable. For example, '001' is not allowe
 
 package daily.coding.problem.day7
 
-fun decodeMessage(message: String): Int {
+fun numEncoding(message: String): Int {
     if (message.startsWith("0")) return 0
     if (message.length <= 1) return 1
 
     var total = 0
 
     if (message.substring(0, 2).toInt() <= 26) {
-        total += decodeMessage(message.substring(2))
+        total += numEncoding(message.substring(2))
     }
-    total += decodeMessage(message.substring(1))
-    
+    total += numEncoding(message.substring(1))
+
     return total
 }
