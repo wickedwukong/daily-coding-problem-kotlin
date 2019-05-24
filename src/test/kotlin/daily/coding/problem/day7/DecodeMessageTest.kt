@@ -12,10 +12,10 @@ class DecodeMessageTest {
 
     @Test
     fun `zeros`() {
+        assertThat(numEncoding("30")).isEqualTo(0)
         assertThat(numEncoding("10")).isEqualTo(1)
         assertThat(numEncoding("011")).isEqualTo(0)
         assertThat(numEncoding("101")).isEqualTo(1)
-        assertThat(numEncoding("30")).isEqualTo(0)
         assertThat(numEncoding("110")).isEqualTo(1)
         assertThat(numEncoding("1010")).isEqualTo(1)
         assertThat(numEncoding("10101")).isEqualTo(1)

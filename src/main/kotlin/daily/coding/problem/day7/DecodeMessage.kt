@@ -11,6 +11,27 @@ You can assume that the messages are decodable. For example, '001' is not allowe
 package daily.coding.problem.day7
 
 fun numEncoding(message: String): Int {
+    val cache = mutableMapOf<Int, Int>()
+
+    cache[message.length] = 1
+
+    ((message.length - 1) downTo 0).forEach {
+        when {
+            message[it] == '0' -> cache[it] = 0
+            it == message.length - 1 -> cache[it] = 1
+            else -> {
+                cache[it] = 0
+                if (message.substring(it, it + 2).toInt() <= 26) {
+                    cache[it] = cache[it + 2]!!
+                }
+                cache[it] = cache[it]!! + cache[it + 1]!!
+            }
+        }
+    }
+    return cache[0]!!
+}
+
+fun numEncodingRecursive(message: String): Int {
     if (message.startsWith("0")) return 0
     if (message.length <= 1) return 1
 
