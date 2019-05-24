@@ -23,19 +23,27 @@ For example, the following tree has 5 unival subtrees:
 package daily.coding.problem.day8
 
 fun numUnivalTree(tree: Node): Int {
-    var total = 0
-    if (isUnivalTree(tree)) {
-        total += 1
-    }
+    return countOneIfItIsUnivalTree(tree) + numLeftSubUnivalTree(tree) + numRightSubUnivalTree(tree)
+}
 
-    tree.left?.let {
-        total += numUnivalTree(it)
+private fun countOneIfItIsUnivalTree(tree: Node): Int {
+    return if (isUnivalTree(tree)) {
+        1
+    } else {
+        0
     }
+}
 
-    tree.right?.let {
-        total += numUnivalTree(it)
-    }
-    return total
+private fun numRightSubUnivalTree(tree: Node): Int {
+    return tree.right?.let {
+        numUnivalTree(it)
+    } ?: 0
+}
+
+private fun numLeftSubUnivalTree(tree: Node): Int {
+    return tree.left?.let {
+        numUnivalTree(it)
+    } ?: 0
 }
 
 fun isUnivalTree(parent: Node): Boolean {
