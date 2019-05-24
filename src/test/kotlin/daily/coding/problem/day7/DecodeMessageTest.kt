@@ -7,12 +7,14 @@ class DecodeMessageTest {
 
     @Test
     fun `should have 0 ways of decoding for empty string`() {
-        assertThat(decodeMessage("")).isEqualTo(0)
+        assertThat(decodeMessage("")).isEqualTo(1)
     }
 
     @Test
     fun `zeros`() {
         assertThat(decodeMessage("10")).isEqualTo(1)
+        assertThat(decodeMessage("011")).isEqualTo(0)
+        assertThat(decodeMessage("101")).isEqualTo(1)
         assertThat(decodeMessage("30")).isEqualTo(0)
         assertThat(decodeMessage("110")).isEqualTo(1)
         assertThat(decodeMessage("1010")).isEqualTo(1)
