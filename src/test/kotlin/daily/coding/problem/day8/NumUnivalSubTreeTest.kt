@@ -56,17 +56,42 @@ class NumUnivalSubTreeTest {
             \
              b
 * */
+
     @Test
     fun `test sample data - 2`() {
-        assertThat(numUnivalTree(Node(1,
-                Node(3, null, null),
-                Node(2,
-                        Node(2, null, null),
-                        Node(2,
+        assertThat(numUnivalTree(Node('a',
+                Node('c', null, null),
+                Node('b',
+                        Node('b', null, null),
+                        Node('b',
                                 null,
-                                Node(2,
+                                Node('b',
                                         null,
                                         null)))))).isEqualTo(5)
+    }
+
+
+/*
+   a
+  / \
+ a   a
+     /\
+    a  a
+        \
+         A
+* */
+
+    @Test
+    fun `test sample data - 3`() {
+        assertThat(numUnivalTree(Node("a",
+                Node("a", null, null),
+                Node("a",
+                        Node("a", null, null),
+                        Node("a",
+                                null,
+                                Node("A",
+                                        null,
+                                        null)))))).isEqualTo(3)
     }
 
 }
