@@ -46,4 +46,5 @@ class NumUnivalSubTreeTest {
                                 Node(1, null, null)),
                         Node(0, null, null))))).isEqualTo(5)
     }
+
 }

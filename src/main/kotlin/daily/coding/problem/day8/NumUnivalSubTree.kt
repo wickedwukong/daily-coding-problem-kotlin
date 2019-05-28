@@ -22,11 +22,11 @@ For example, the following tree has 5 unival subtrees:
 
 package daily.coding.problem.day8
 
-fun numUnivalTree(tree: Node): Int {
+fun <T> numUnivalTree(tree: Node<T>): Int {
     return countOneIfItIsUnivalTree(tree) + numLeftSubUnivalTree(tree) + numRightSubUnivalTree(tree)
 }
 
-private fun countOneIfItIsUnivalTree(tree: Node): Int {
+private fun <T> countOneIfItIsUnivalTree(tree: Node<T>): Int {
     return if (isUnivalTree(tree)) {
         1
     } else {
@@ -34,24 +34,26 @@ private fun countOneIfItIsUnivalTree(tree: Node): Int {
     }
 }
 
-private fun numRightSubUnivalTree(tree: Node): Int {
+private fun <T> numRightSubUnivalTree(tree: Node<T>): Int {
     return tree.right?.let {
         numUnivalTree(it)
     } ?: 0
 }
 
-private fun numLeftSubUnivalTree(tree: Node): Int {
+private fun <T> numLeftSubUnivalTree(tree: Node<T>): Int {
     return tree.left?.let {
         numUnivalTree(it)
     } ?: 0
 }
 
-fun isUnivalTree(parent: Node): Boolean {
+fun <T> isUnivalTree(parent: Node<T>): Boolean {
     return if (parent.left == null && parent.right == null) {
         true
-    } else if (parent.value != parent.left?.value || parent.value != parent.right?.value) {
+    } else if (parent.value != parent.left?.value  || parent.value != parent.right?.value) {
         false
-    } else isUnivalTree(parent.left) && isUnivalTree(parent.right)
+    } else {
+        isUnivalTree(parent.left!!) && isUnivalTree(parent.right!!)
+    }
 }
 
-data class Node(val value: Int, val left: Node?, val right: Node?)
+data class Node<T>(val value: T, val left: Node<T>?, val right: Node<T>?)
