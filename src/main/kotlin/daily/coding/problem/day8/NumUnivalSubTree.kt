@@ -23,6 +23,33 @@ For example, the following tree has 5 unival subtrees:
 package daily.coding.problem.day8
 
 fun <T> numUnivalTree(tree: Node<T>): Int {
+    val (count, _) = doIt(tree)
+    return count
+}
+
+fun <T> doIt(tree: Node<T>?): Pair<Int, Boolean> {
+    if (tree == null) {
+        return Pair(0, true)
+    }
+
+    val (leftCount, isLeftUnival) = doIt(tree.left)
+    val (rightCount, isRightUnival) = doIt(tree.right)
+    val total = leftCount + rightCount
+
+    return if (isLeftUnival && isRightUnival) {
+        if (tree.value != tree.left?.value && tree.left != null) {
+            Pair(total, false)
+        } else if (tree.value != tree.right?.value && tree.right != null) {
+            Pair(total, false)
+        } else {
+            return Pair(total + 1, true)
+        }
+    } else {
+        Pair(total, false)
+    }
+}
+
+fun <T> numUnivalTreeInefficient(tree: Node<T>): Int {
     return countOneIfItIsUnivalTree(tree) + numLeftSubUnivalTree(tree) + numRightSubUnivalTree(tree)
 }
 

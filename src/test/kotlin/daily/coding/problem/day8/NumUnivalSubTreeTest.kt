@@ -7,24 +7,44 @@ class NumUnivalSubTreeTest {
 
     @Test
     fun `Single node tree should have 1 sub unival tree`() {
-        assertThat(numUnivalTree(Node(1, null, null))).isEqualTo(1)
+        val tree = Node(1, null, null)
+
+        assertThat(numUnivalTree(tree)).isEqualTo(1)
+        assertThat(numUnivalTreeInefficient(tree)).isEqualTo(1)
     }
 
     @Test
     fun `A root with one child who has the same value has 2 unival tree`() {
-        assertThat(numUnivalTree(Node(1, Node(1, null, null), null))).isEqualTo(2)
-        assertThat(numUnivalTree(Node(1, null, Node(1, null, null)))).isEqualTo(2)
+        val treeWithLeftChild = Node(1, Node(1, null, null), null)
+
+        assertThat(numUnivalTree(treeWithLeftChild)).isEqualTo(2)
+        assertThat(numUnivalTreeInefficient(treeWithLeftChild)).isEqualTo(2)
+
+        val treeWithRightChild = Node(1, null, Node(1, null, null))
+
+        assertThat(numUnivalTree(treeWithRightChild)).isEqualTo(2)
+        assertThat(numUnivalTreeInefficient(treeWithRightChild)).isEqualTo(2)
     }
 
     @Test
     fun `A root with one child who has a different value has 1 unival tree`() {
-        assertThat(numUnivalTree(Node(1, Node(2, null, null), null))).isEqualTo(1)
-        assertThat(numUnivalTree(Node(1, null, Node(2, null, null)))).isEqualTo(1)
+        val treeWithLeftChild = Node(1, Node(2, null, null), null)
+
+        assertThat(numUnivalTree(treeWithLeftChild)).isEqualTo(1)
+        assertThat(numUnivalTreeInefficient(treeWithLeftChild)).isEqualTo(1)
+
+        val treeWithRightChild = Node(1, null, Node(2, null, null))
+
+        assertThat(numUnivalTree(treeWithRightChild)).isEqualTo(1)
+        assertThat(numUnivalTreeInefficient(treeWithRightChild)).isEqualTo(1)
     }
 
     @Test
     fun `A root with two children, right and left, who have the same value has 3 unival tree`() {
-        assertThat(numUnivalTree(Node(1, Node(1, null, null), Node(1, null, null)))).isEqualTo(3)
+        val tree = Node(1, Node(1, null, null), Node(1, null, null))
+
+        assertThat(numUnivalTree(tree)).isEqualTo(3)
+        assertThat(numUnivalTreeInefficient(tree)).isEqualTo(3)
     }
 
     /*
@@ -38,13 +58,16 @@ class NumUnivalSubTreeTest {
     * */
     @Test
     fun `test sample data`() {
-        assertThat(numUnivalTree(Node(0,
+        val tree = Node(0,
                 Node(1, null, null),
                 Node(0,
                         Node(1,
                                 Node(1, null, null),
                                 Node(1, null, null)),
-                        Node(0, null, null))))).isEqualTo(5)
+                        Node(0, null, null)))
+
+        assertThat(numUnivalTree(tree)).isEqualTo(5)
+        assertThat(numUnivalTreeInefficient(tree)).isEqualTo(5)
     }
 
     /*
@@ -59,7 +82,7 @@ class NumUnivalSubTreeTest {
 
     @Test
     fun `test sample data - 2`() {
-        assertThat(numUnivalTree(Node('a',
+        val tree = Node('a',
                 Node('c', null, null),
                 Node('b',
                         Node('b', null, null),
@@ -67,7 +90,10 @@ class NumUnivalSubTreeTest {
                                 null,
                                 Node('b',
                                         null,
-                                        null)))))).isEqualTo(5)
+                                        null))))
+
+        assertThat(numUnivalTree(tree)).isEqualTo(5)
+        assertThat(numUnivalTreeInefficient(tree)).isEqualTo(5)
     }
 
 
@@ -83,7 +109,7 @@ class NumUnivalSubTreeTest {
 
     @Test
     fun `test sample data - 3`() {
-        assertThat(numUnivalTree(Node("a",
+        val tree = Node("a",
                 Node("a", null, null),
                 Node("a",
                         Node("a", null, null),
@@ -91,7 +117,10 @@ class NumUnivalSubTreeTest {
                                 null,
                                 Node("A",
                                         null,
-                                        null)))))).isEqualTo(3)
+                                        null))))
+
+        assertThat(numUnivalTree(tree)).isEqualTo(3)
+        assertThat(numUnivalTreeInefficient(tree)).isEqualTo(3)
     }
 
 }
