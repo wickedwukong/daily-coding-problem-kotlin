@@ -11,9 +11,9 @@ class NumUnivalSubTreeTest {
     }
 
     @Test
-    fun `A root with one child who has the same value has 1 unival tree`() {
-        assertThat(numUnivalTree(Node(1, Node(1, null, null), null))).isEqualTo(1)
-        assertThat(numUnivalTree(Node(1, null, Node(1, null, null)))).isEqualTo(1)
+    fun `A root with one child who has the same value has 2 unival tree`() {
+        assertThat(numUnivalTree(Node(1, Node(1, null, null), null))).isEqualTo(2)
+        assertThat(numUnivalTree(Node(1, null, Node(1, null, null)))).isEqualTo(2)
     }
 
     @Test
@@ -45,6 +45,28 @@ class NumUnivalSubTreeTest {
                                 Node(1, null, null),
                                 Node(1, null, null)),
                         Node(0, null, null))))).isEqualTo(5)
+    }
+
+    /*
+       a
+      / \
+     c   b
+         /\
+        b  b
+            \
+             b
+* */
+    @Test
+    fun `test sample data - 2`() {
+        assertThat(numUnivalTree(Node(1,
+                Node(3, null, null),
+                Node(2,
+                        Node(2, null, null),
+                        Node(2,
+                                null,
+                                Node(2,
+                                        null,
+                                        null)))))).isEqualTo(5)
     }
 
 }
