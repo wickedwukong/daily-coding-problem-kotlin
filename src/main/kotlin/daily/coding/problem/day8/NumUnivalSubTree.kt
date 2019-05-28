@@ -27,7 +27,7 @@ fun <T> numUnivalTree(tree: Node<T>): Int {
 }
 
 private fun <T> countOneIfItIsUnivalTree(tree: Node<T>): Int {
-    return if (isUnivalTree(tree)) {
+    return if (isUnivalTree(tree, tree.value)) {
         1
     } else {
         0
@@ -46,19 +46,12 @@ private fun <T> numLeftSubUnivalTree(tree: Node<T>): Int {
     } ?: 0
 }
 
-fun <T> isUnivalTree(parent: Node<T>?): Boolean {
-    fun isLeaf() = parent?.left == null && parent?.right == null
+fun <T> isUnivalTree(parent: Node<T>?, value: T): Boolean {
 
-    return if (parent == null) {
-        true
-    } else if (isLeaf()) {
-        true
-    } else if (parent.value != parent.left?.value && parent.left != null) {
-        false
-    } else if (parent.value != parent.right?.value && parent.right != null) {
-        false
-    } else {
-        isUnivalTree(parent.left) && isUnivalTree(parent.right)
+    return when {
+        parent == null -> true
+        parent.value == value -> isUnivalTree(parent.left, value) && isUnivalTree(parent.right, value)
+        else -> false
     }
 }
 
