@@ -23,15 +23,11 @@ package daily.coding.problem.day12
 fun countUniqueWays(n: Int, stepSet: Set<Int> = setOf(1, 2)): Int {
     val results = (0..n).fold(Pair(0, mapOf<Int, Int>()), { acc, stairSteps ->
 
-        val totalUniqueWays = stepSet.fold(0, { total, steps ->
-            if (stairSteps == steps) {
-                total + 1
-            } else {
-                if (steps != 1) {
-                    total + (acc.second[stairSteps - steps] ?: 0)
-                } else {
-                    (acc.second[stairSteps - steps] ?: 0)
-                }
+        val totalUniqueWays = stepSet.toList().sorted().fold(0, { total, steps ->
+            when {
+                stairSteps == steps -> total + 1
+                steps == 1 -> acc.second[stairSteps - steps] ?: 0
+                else -> total + (acc.second[stairSteps - steps] ?: 0)
             }
         })
 
