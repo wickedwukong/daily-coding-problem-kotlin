@@ -11,13 +11,14 @@ class NStepStaircaseTest {
     }
 
     @Test
-    fun `should have 1 way for  step staircase`() {
+    fun `should have 1 way for 1 step staircase`() {
         assertThat(countUniqueWays(1)).isEqualTo(1)
     }
 
     @Test
     fun `should have 2 way for  2 step staircase`() {
         assertThat(countUniqueWays(2)).isEqualTo(2)
+        assertThat(countUniqueWays(2, setOf(2))).isEqualTo(1)
     }
 
     @Test
@@ -28,10 +29,11 @@ class NStepStaircaseTest {
     @Test
     fun `more complicated cases`() {
         assertThat(countUniqueWays(5)).isEqualTo(8)
+        assertThat(countUniqueWays(5, setOf(2, 3))).isEqualTo(2)
     }
 
     @Test
     fun `a set of steps - sample data`() {
-        assertThat(countUniqueWays(5, setOf(3, 1, 5))).isEqualTo(5)
+        assertThat(countUniqueWays(5, setOf(1, 3, 5))).isEqualTo(5)
     }
 }
