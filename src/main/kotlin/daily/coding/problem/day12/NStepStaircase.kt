@@ -20,26 +20,22 @@ For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time.
 
 package daily.coding.problem.day12
 
-fun countUniqueWays(n: Int, steps: Set<Int> = setOf(1, 2)): Int {
-    if (n == 0) return 0
-//    if (n == 1) return 1
-//    if (n == 2) return 2
+fun countUniqueWays(n: Int, stepSet: Set<Int> = setOf(1, 2)): Int {
+    val results = (0..n).fold(Pair(0, mapOf<Int, Int>()), { acc, stairSteps ->
 
-    val results = (1..n).fold(Pair(0, mapOf<Int, Int>()), { acc, i ->
-
-        val total = steps.toList().sorted().fold(acc.first, { total, j ->
-            if (i == j) {
+        val totalUniqueWays = stepSet.toList().sorted().fold(acc.first, { total, steps ->
+            if (stairSteps == steps) {
               total + 1
             } else {
-                if (j != 1) {
-                    total + (acc.second[i - j] ?: 0)
+                if (steps != 1) {
+                    total + (acc.second[stairSteps - steps] ?: 0)
                 } else {
                     total
                 }
             }
         })
 
-        Pair(total, acc.second.plus(Pair(i, total)))
+        Pair(totalUniqueWays, acc.second.plus(Pair(stairSteps, totalUniqueWays)))
     })
 
     return results.first
