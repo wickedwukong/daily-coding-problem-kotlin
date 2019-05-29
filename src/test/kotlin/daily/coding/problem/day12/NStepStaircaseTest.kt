@@ -29,4 +29,9 @@ class NStepStaircaseTest {
     fun `more complicated cases`() {
         assertThat(countUniqueWays(5)).isEqualTo(8)
     }
+
+    @Test
+    fun `a set of steps - sample data`() {
+        assertThat(countUniqueWays(5, setOf(1, 3, 5))).isEqualTo(5)
+    }
 }
