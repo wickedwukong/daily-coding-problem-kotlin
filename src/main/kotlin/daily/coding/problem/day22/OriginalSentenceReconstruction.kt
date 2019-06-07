@@ -14,9 +14,8 @@ object OriginalSentenceReconstruction {
         return sentence.fold(Pair("", emptyList<String>()), { acc, char ->
             val currentAttemptedWord = acc.first + char
             if (dictionary.contains(currentAttemptedWord)) {
-                val reconstruction = acc.second.plus(currentAttemptedWord) + reconstruct(sentence.substring(currentAttemptedWord.length), dictionary)
-                Pair(currentAttemptedWord, reconstruction)
-
+                val reconstruction = acc.second.plus(currentAttemptedWord)
+                Pair("", reconstruction)
             } else {
                 Pair(currentAttemptedWord, acc.second)
             }

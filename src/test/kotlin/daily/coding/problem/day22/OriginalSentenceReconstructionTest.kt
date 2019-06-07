@@ -34,5 +34,6 @@ class OriginalSentenceReconstructionTest {
     @Test
     fun `should have a reconstruction for more words - sample data`() {
         assertThat(OriginalSentenceReconstruction("thequickbrownfox", listOf("quick", "brown", "the", "fox"))).isEqualTo(listOf("the", "quick", "brown", "fox"))
+        assertThat(OriginalSentenceReconstruction("bedbathandbeyond", listOf("bed", "bath", "bedbath", "and", "beyond"))).isEqualTo(listOf("bed", "bath", "and", "beyond"))
     }
 }
