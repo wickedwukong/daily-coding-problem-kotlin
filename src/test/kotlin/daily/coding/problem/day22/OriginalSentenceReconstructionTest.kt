@@ -25,4 +25,9 @@ class OriginalSentenceReconstructionTest {
     fun `should have a reconstruction for one word`() {
         assertThat(OriginalSentenceReconstruction("box", listOf("box"))).isEqualTo(listOf("box"))
     }
+
+    @Test
+    fun `should have a reconstruction for two words`() {
+        assertThat(OriginalSentenceReconstruction("redfox", listOf("fox", "red"))).isEqualTo(listOf("red", "fox"))
+    }
 }
